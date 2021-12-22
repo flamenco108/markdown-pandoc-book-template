@@ -1,0 +1,66 @@
+---
+# This requires at least pandoc v2.15
+
+#https://pandoc.org/MANUAL.html#metadata-variables
+
+# Meta variables
+title: Python for NetOps essentials
+author: Gregory Bers
+subtitle: How I Learned to Stop Worrying and Love the Code
+# abstract: |
+#   De basis wat je nodig hebt om Python te gebruiken als network engineer.
+keywords:
+  - python
+  - netops
+  - git
+
+# Language variables
+lang: nl-BE
+
+# Custom variables
+rights: © 2021 Gregory Bers
+
+# Html variables
+
+
+# Latex variables
+# https://pandoc.org/MANUAL.html#variables-for-latex
+documentclass: book
+numbersections: false
+graphics: true
+
+# https://www.burble.co.za/files/Preparing_your_pages.pdf
+# https://ftp.snt.utwente.nl/pub/software/tex/macros/latex/contrib/geometry/geometry.pdf
+geometry:
+  - paperwidth=170mm
+  - paperheight=240mm
+  - tmargin=25mm
+  - bmargin=25mm
+  - lmargin=19mm
+  - rmargin=19mm
+
+# 10,11,12 supported
+fontsize: 10pt
+mainfont: SourceSerif4-Regular.ttf
+mainfontoptions:
+  - Path=resources/fonts/AdobeSourceSerif/
+  - Scale=0.9
+  - BoldFont=SourceSerif4-Bold.ttf
+  - ItalicFont=SourceSerif4-It.ttf
+  - BoldItalicFont=SourceSerif4-BoldIt.ttf
+monofont: UbuntuMono-Regular.ttf
+monofontoptions:
+  - Path=resources/fonts/UbuntuMono/
+  - Scale=0.8
+sansfont: Ubuntu-Light.ttf
+sansfontoptions:
+  - Path=resources/fonts/Ubuntu/
+  - Scale=1.0
+  - BoldFont=Ubuntu-Bold.ttf
+  - ItalicFont=Ubuntu-Italic.ttf
+  - BoldItalicFont=Ubuntu-BoldItalic.ttf
+
+# Filter preferences:
+# - pandoc-crossref
+linkReferences: true
+---
