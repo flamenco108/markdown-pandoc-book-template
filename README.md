@@ -26,7 +26,7 @@ The difference between the print and web pdf is that the print pfd includes extr
 
 `make clean` verwijdert de gegenereerde files
 
-kijk zeker in de makefile voor de nodige variablen aan te passen.
+Be sure to check out the makefile to tweak everything to your needs
 
 ## Book settings
 
