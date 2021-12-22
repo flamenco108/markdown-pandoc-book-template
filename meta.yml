@@ -4,21 +4,21 @@
 #https://pandoc.org/MANUAL.html#metadata-variables
 
 # Meta variables
-title: Python for NetOps essentials
-author: Gregory Bers
-subtitle: How I Learned to Stop Worrying and Love the Code
+title: Book title
+author: author name
+subtitle: subtitle goes here
 # abstract: |
 #   De basis wat je nodig hebt om Python te gebruiken als network engineer.
 keywords:
-  - python
-  - netops
-  - git
+  - keyword1
+  - keyword2
+  - keyword3
 
-# Language variables
-lang: nl-BE
+# Language variables such as en-US, nl-BE, ...
+lang: en-GB
 
 # Custom variables
-rights: © 2021 Gregory Bers
+rights: © 2021 Author name
 
 # Html variables
 
@@ -26,7 +26,7 @@ rights: © 2021 Gregory Bers
 # Latex variables
 # https://pandoc.org/MANUAL.html#variables-for-latex
 documentclass: book
-numbersections: false
+numbersections: false #number all heading1's
 graphics: true
 
 # https://www.burble.co.za/files/Preparing_your_pages.pdf
