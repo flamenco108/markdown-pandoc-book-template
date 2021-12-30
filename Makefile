@@ -117,12 +117,13 @@ environment:
 	sudo apt install \
 			make \
 			python3 \
+			python3-pip \
 			pandoc \
 			texlive-fonts-recommended \
 			texlive-xetex \
 			-y
+	pip3 install pyyaml
 # sudo apt install texlive-full -y
-
 
 ####################################################################################################
 # File builders
@@ -164,9 +165,7 @@ $(BUILD)/markdown/$(OUTPUT_FILENAME).md:	$(MARKDOWN_DEPENDENCIES)
 	# Content filters and prep
 	sed -i 's/..\/..\/resources\/images/resources\/images/g' $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
 
-	./resources/scripts/fixfootnotes.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
-	./resources/scripts/splitchapters.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
-	./resources/scripts/defaultimagesettings.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
+	./resources/scripts/post_processing.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
 
 	cat $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md | $(BOOK_CONTENT_FILTERS) | $(PANDOC_COMMAND) $(ARGS) $(MARKDOWN_ARGS) -o $@
 
