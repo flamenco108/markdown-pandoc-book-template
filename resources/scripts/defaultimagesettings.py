@@ -9,12 +9,12 @@ from pprint import pprint
 with open(sys.argv[1], "r+") as file:
     data = file.read()
 
-    regex_images = r"(!\[[\w\s-]+\]\([\w\s\./-]+\))\s*[^\{]"
+    regex_images = r"(\(resources/images/[\w\s/\-\.]+\)\s*\n$)"
 
-    matches = set(re.findall(regex_images, data))
-   
-    for index, match in enumerate(matches):
-        data = re.sub(re.escape(match), f"{match}{{width=50%}}", data)
+    # matches = set(re.findall(regex_images, data, flags=re.MULTILINE))   
+    # pprint(matches)
+
+    data = re.sub(regex_images, r"\g<1>{width=60%}\n", data, flags=re.MULTILINE)
     
     file.seek(0)
     file.write(data)

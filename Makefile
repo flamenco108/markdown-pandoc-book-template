@@ -166,7 +166,7 @@ $(BUILD)/markdown/$(OUTPUT_FILENAME).md:	$(MARKDOWN_DEPENDENCIES)
 
 	./resources/scripts/fixfootnotes.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
 	./resources/scripts/splitchapters.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
-	# ./resources/scripts/defaultimagesettings.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
+	./resources/scripts/defaultimagesettings.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
 
 	cat $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md | $(BOOK_CONTENT_FILTERS) | $(PANDOC_COMMAND) $(ARGS) $(MARKDOWN_ARGS) -o $@
 
