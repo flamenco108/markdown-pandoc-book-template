@@ -20,6 +20,9 @@ lang: en-GB
 # Custom variables
 rights: © 2021 Author name
 
+# Script variables
+default-image-width: 60 #default image width % used when a width is not specified
+
 # Html variables
 
 
