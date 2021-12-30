@@ -9,7 +9,7 @@ from pprint import pprint
 with open(sys.argv[1], "r+") as file:
     data = file.read()
 
-    regex_images = r"(\(resources/images/[\w\s/\-\.]+\)\s*\n$)"
+    regex_images = r"(\(resources/images/[\w\s/\-\.]+\))\s*\n$"
 
     # matches = set(re.findall(regex_images, data, flags=re.MULTILINE))   
     # pprint(matches)
