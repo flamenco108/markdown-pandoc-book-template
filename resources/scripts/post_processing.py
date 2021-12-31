@@ -109,6 +109,30 @@ def defaultimagesettings(data:str, width:int = 60) -> str:
 
     return data
 
+def maxheadingnumberdepth(data:str, maxlevel:int = 6) -> str:
+    """
+    Allows the user to choose until which level headings are numbered. Adds 
+    .unnumbered to existing headings
+
+    Args:
+        data (str): textual data
+        maxlevel (int): until which heading level numbers are applied
+
+    Returns:
+        str: processed data
+    """
+    maxlevel += 1
+    
+        # .* matcht teveel, 
+        ## Netwerk schema's {.unlisted} {#netwerk-schemas-.unlisted .unnumbered}
+
+    # Match all headings without extra pandoc parameters
+    regex_headings = fr"^(?!.*unnumbered)(#{{{maxlevel},7}}.*?)({{(.*)}}|)\n"
+
+    data = re.sub(regex_headings, fr"\g<1> {{.unnumbered \g<3>}}\n", data, flags=re.MULTILINE)
+
+    return data
+
 # Bijv, Bijv., bijv en bijv. fixen
 
 with open('meta.yml', 'r') as yaml_file:
@@ -117,9 +141,12 @@ with open('meta.yml', 'r') as yaml_file:
 with open(sys.argv[1], "r+") as file:
     data = file.read()
 
-    data = splitchapters(data, ["Oefeningen"])
+    data = splitchapters(data, meta_settings['split-chapters'])
     data = fixfootnotes(data)
     data = defaultimagesettings(data)
+    
+    if(meta_settings['numbersections']):
+        data = maxheadingnumberdepth(data, meta_settings['max-section-number-depth'])
 
     file.seek(0)
     file.write(data)
