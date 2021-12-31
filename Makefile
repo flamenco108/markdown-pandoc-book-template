@@ -159,16 +159,16 @@ $(BUILD)/markdown/$(OUTPUT_FILENAME).md:	$(MARKDOWN_DEPENDENCIES)
 	@echo "Building $@"
 	mkdir -p $(BUILD)/markdown
 	$(FRONTMATTER_CONTENT) > $(BUILD)/markdown/$(OUTPUT_FILENAME)_front.md
-	$(BACKMATTER_CONTENT) > $(BUILD)/markdown/$(OUTPUT_FILENAME)_back.md
 	$(BOOK_CONTENT) > $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
+	echo "" >> $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
+	$(BACKMATTER_CONTENT) >> $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
 
 	# Content filters and prep
 	sed -i 's/..\/..\/resources\/images/resources\/images/g' $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
-
 	./resources/scripts/post_processing.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
 
 	cat $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md | $(BOOK_CONTENT_FILTERS) | $(PANDOC_COMMAND) $(ARGS) $(MARKDOWN_ARGS) -o $@
-
+	
 	@echo "$@ was built"
 
 # Build EPUB
