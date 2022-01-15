@@ -64,6 +64,11 @@ with open(sys.argv[1], "r+") as file:
             # makes it easier to convert with https://jmalarcon.github.io/markdowntables/
             "find": r"^\s*((</*table>|</*tr>|</*td>).*)\n",
             "replace": r"\g<1>"
+        },
+        {
+            # fix empty headings
+            "find": r"^#+\s$",
+            "replace": r""
         }
     ]
 
