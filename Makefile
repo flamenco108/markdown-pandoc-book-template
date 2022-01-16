@@ -65,9 +65,9 @@ HTML_ARGS      = --template resources/templates/html.html --standalone --to html
 PDF_PRINT_ARGS = --template resources/templates/pdf.latex --pdf-engine xelatex
 PDF_WEB_ARGS   = --template resources/templates/pdf.latex --pdf-engine xelatex -V classoption=oneside
 
-# Per-format file dependencies
+# Per-format file dependencies. If a dependency changes the make command will notice the change
 
-BASE_DEPENDENCIES     = $(MAKEFILE) $(CHAPTERS) $(METADATA) $(IMAGES) $(TEMPLATES)
+BASE_DEPENDENCIES     = $(MAKEFILE) $(CHAPTERS) $(METADATA) $(IMAGES) $(TEMPLATES) $(FRONTMATTER) $(BACKMATTER)
 MARKDOWN_DEPENDENCIES = $(BASE_DEPENDENCIES)
 DOCX_DEPENDENCIES     = $(BASE_DEPENDENCIES)
 EPUB_DEPENDENCIES     = $(BASE_DEPENDENCIES)
