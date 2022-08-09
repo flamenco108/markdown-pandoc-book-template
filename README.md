@@ -5,6 +5,8 @@ Skeleton files for writing a book using markdown. Typora is recommended
 
 - All chapters are in the `book/chapters` folder.
 - All front matter (thanks etc) is in the `book/front_matter folder
+- All back matter (appendix etc) is in the `book/back_matter folder
+    - All back matter content will have no chapter numbering but will be included in the toc
 
 ## Usage
 
@@ -28,9 +30,10 @@ The difference between the print and web pdf is that the print pfd includes extr
 
 Be sure to check out the makefile to tweak everything to your needs
 
-## Book settings
+## Book and pandoc settings
 
 All book settings can be found in `meta.yaml`
+All pandoc settings can be found in `pandoc.yaml`
 
 ## Includes
 

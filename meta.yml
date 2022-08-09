@@ -7,8 +7,10 @@
 title: Book title
 author: author name
 subtitle: subtitle goes here
+
 # abstract: |
-#   De basis wat je nodig hebt om Python te gebruiken als network engineer.
+#   Abstract text goes here
+
 keywords:
   - keyword1
   - keyword2
@@ -20,21 +22,28 @@ lang: en-GB
 # Custom variables
 rights: © 2021 Author name
 
-# Script variables
-default-image-width: 60         # default image width % used when a width is not specified
-max-section-number-depth: 1     # until which level sections are numbered. Only works when
-                                # numbersections is true
-split-chapters:                 # chapters which should always start on a new page
-  - Oefeningen
-
-# Html variables
-
-
 # Latex variables
 # https://pandoc.org/MANUAL.html#variables-for-latex
 documentclass: book
 numbersections: false #number all heading1's
 graphics: true
+
+# Generate a table of contents
+toc: true
+toc-depth: 3
+toc-title: Inhoudsopgave
+
+lof: true # List of figures
+lof-title: Lijst met afbeeldingen
+
+lot: false # List of tables
+lot-title: Lijst met tabellen
+
+# Include a thanks footnote for the title
+thanks: false
+
+# Specify file without extension
+appendix: build/latex/backmatter
 
 # https://www.burble.co.za/files/Preparing_your_pages.pdf
 # https://ftp.snt.utwente.nl/pub/software/tex/macros/latex/contrib/geometry/geometry.pdf
@@ -45,6 +54,19 @@ geometry:
   - bmargin=25mm
   - lmargin=19mm
   - rmargin=19mm
+
+# Set line spacing
+#linestretch: 1.25
+
+preventligatures: false
+
+# if true, pandoc will use document class settings for indentation (the default 
+# LaTeX template otherwise removes indentation and adds space between paragraphs)
+indent: false
+
+# Color hyperlinks
+colorlinks: false
+
 
 # 10,11,12 supported
 fontsize: 10pt
@@ -70,3 +92,11 @@ sansfontoptions:
 # Filter preferences:
 # - pandoc-crossref
 linkReferences: true
+
+
+# Script variables
+default-image-width: 60         # default image width % used when a width is not specified
+max-section-number-depth: 1     # until which level sections are numbered. Only works when
+                                # numbersections is true
+split-chapters:                 # chapters which should always start on a new page
+  - Oefeningen

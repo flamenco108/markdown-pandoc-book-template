@@ -1,3 +1,3 @@
-# Voorwoord {.unnumbered .unlisted}
+# Voorwoord
 
 introductie

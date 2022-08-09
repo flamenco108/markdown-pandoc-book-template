@@ -1,0 +1,37 @@
+---
+# https://pandoc.org/MANUAL.html#defaults-files
+# ${.} stands for current directory
+
+# verbosity can have the values ERROR, WARNING, or INFO.
+verbosity: ERROR
+
+metadata-files:
+  - meta.yml
+
+dpi: 300
+
+highlight-style: resources/code-highlight-themes/ayu-light.theme
+
+# include-before-body:
+#   - build/markdown/book_front.md
+
+# include-after-body:
+  # - build/latex/appendix.tex
+  # - book/back_matter/01-appendix.md
+
+# Use the listings package for codeblocks
+# listings: true
+
+#
+# Variables
+
+variables:
+  links-as-notes: true
+
+# 
+# PDF settings
+pdf-engine: xelatex
+
+# 
+# Markdown settings
+markdown-headings: atx
