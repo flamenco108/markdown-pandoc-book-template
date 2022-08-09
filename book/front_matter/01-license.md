@@ -2,50 +2,15 @@
 
 **NOT FOR RELEASE OR PUBLISHING**
 
-Publication date: 2021-12-20
+Publication date: \today
 
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
-\   
-
+\null\vfill
 
 First name, Surname
 
 Title
 
-© 2021, First name, Surname
+© \the\year{}, First name, Surname
 
 ISBN: TBA, Self-published
 
