@@ -4,6 +4,7 @@ import re
 import sys
 import yaml
 from typing import List
+from pprint import pprint
 
 def splitchapters(data:str, chapters:List) -> str:
     """
@@ -103,7 +104,7 @@ def fixfootnotes(data:str) -> str:
 
 def defaultimagesettings(data:str, width:int = 60) -> str:
     
-    regex_images = r"(\(resources/images/[\w\s/\-\.]+\))\s*\n$"
+    regex_images = r"(\(book/images/[\w\s/\-\.]+\))\s*\n$"
 
     data = re.sub(regex_images, fr"\g<1>{{width={width}%}}\n", data, flags=re.MULTILINE)
 
@@ -135,7 +136,7 @@ def maxheadingnumberdepth(data:str, maxlevel:int = 6) -> str:
 
 # Bijv, Bijv., bijv en bijv. fixen
 
-with open('meta.yml', 'r') as yaml_file:
+with open('book/meta.yml', 'r') as yaml_file:
     meta_settings = yaml.load(yaml_file, Loader=yaml.SafeLoader)
 
 with open(sys.argv[1], "r+") as file:

@@ -9,13 +9,13 @@ BUILD = build
 MAKEFILE = Makefile
 
 OUTPUT_FILENAME = book
-METADATA = meta.yml
+METADATA = book/meta.yml
 CHAPTERS = book/chapters/*.md
 FRONTMATTER = book/front_matter/*.md
 BACKMATTER = book/back_matter/*.md
-IMAGES = $(shell find resources/images -type f)
+IMAGES = $(shell find book/images -type f)
 TEMPLATES = $(shell find resources/templates/ -type f)
-COVER_IMAGE = resources/cover/front.png
+COVER_IMAGE = book/cover/front.png
 
 BEFORE_TOC = --include-before-body=$(BUILD)/markdown/$(OUTPUT_FILENAME)_front.md
 
@@ -62,8 +62,8 @@ MARKDOWN_ARGS   = --markdown-headings=atx
 DOCX_ARGS       = --standalone --reference-doc resources/templates/docx.docx
 EPUB_ARGS       = --template resources/templates/epub.html
 HTML_ARGS       = --template resources/templates/html.html --standalone --to html5
-PDF_PRINT_ARGS  = --template resources/templates/pdf.tex --defaults pandoc.yml
-PDF_WEB_ARGS    = --template resources/templates/pdf.tex --defaults pandoc.yml -V classoption=oneside
+PDF_PRINT_ARGS  = --template resources/templates/pdf.tex --defaults book/pandoc.yml
+PDF_WEB_ARGS    = --template resources/templates/pdf.tex --defaults book/pandoc.yml -V classoption=oneside
 BACKMATTER_ARGS = --template resources/templates/include.tex --top-level-division=chapter
 
 # Per-format file dependencies
@@ -168,8 +168,8 @@ $(BUILD)/markdown/$(OUTPUT_FILENAME).md:	$(MARKDOWN_DEPENDENCIES)
 	echo "" >> $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
 
 	# Content filters and prep
-	sed -i 's/..\/..\/resources\/images/resources\/images/g' $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
-	sed -i 's/..\/..\/resources\/images/resources\/images/g' $(BUILD)/markdown/$(OUTPUT_FILENAME)_backmatter.md
+	sed -i 's/..\/images/book\/images/g' $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
+	sed -i 's/..\/images/book\/images/g' $(BUILD)/markdown/$(OUTPUT_FILENAME)_backmatter.md
 	
 	./resources/scripts/post_processing.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
 
