@@ -1,5 +1,7 @@
 *.pdf
 .vscode
 missfont.log
-build
 tex2pdf*
+build
+book
+book/*

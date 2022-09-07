@@ -17,10 +17,7 @@ keywords:
   - keyword3
 
 # Language variables such as en-US, nl-BE, ...
-lang: en-GB
-
-# Custom variables
-rights: © 2021 Author name
+lang: nl-BE
 
 # Latex variables
 # https://pandoc.org/MANUAL.html#variables-for-latex

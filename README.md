@@ -1,6 +1,8 @@
 # Markdown book skeleton
 Skeleton files for writing a book using markdown. Typora is recommended
 
+Copy the book-example folder to book
+
 ## Folders
 
 - All chapters are in the `book/chapters` folder.

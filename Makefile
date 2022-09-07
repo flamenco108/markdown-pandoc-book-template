@@ -174,6 +174,7 @@ $(BUILD)/markdown/$(OUTPUT_FILENAME).md:	$(MARKDOWN_DEPENDENCIES)
 	./resources/scripts/post_processing.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
 
 	# Generate seperate latex file for back matter / appendix
+
 	cat $(BUILD)/markdown/$(OUTPUT_FILENAME)_backmatter.md | $(PANDOC_COMMAND) $(BACKMATTER_ARGS) -o build/latex/backmatter.tex
 
 	cat $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md | $(BOOK_CONTENT_FILTERS) | $(PANDOC_COMMAND) $(ARGS) $(MARKDOWN_ARGS) -o $@
