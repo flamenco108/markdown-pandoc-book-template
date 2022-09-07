@@ -3,6 +3,17 @@ Skeleton files for writing a book using markdown. Typora is recommended
 
 Copy the book-example folder to book
 
+## How-to
+
+```
+mkdir my-new-awesome-book
+git clone https://github.com/epiecs/markdown-pandoc-book-template.git .
+cp -r book-example/ book
+cd book
+```
+
+Then initialize your seperate git repo in the book folder. Be sure to check and modify `meta.yml` and `pandoc.yml`
+
 ## Folders
 
 - All chapters are in the `book/chapters` folder.
