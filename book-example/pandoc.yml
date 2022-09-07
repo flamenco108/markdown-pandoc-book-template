@@ -6,7 +6,7 @@
 verbosity: ERROR
 
 metadata-files:
-  - meta.yml
+  - book/meta.yml
 
 dpi: 300
 
