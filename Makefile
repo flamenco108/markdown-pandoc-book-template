@@ -172,6 +172,7 @@ $(BUILD)/markdown/$(OUTPUT_FILENAME).md:	$(MARKDOWN_DEPENDENCIES)
 	sed -i 's/..\/images/book\/images/g' $(BUILD)/markdown/$(OUTPUT_FILENAME)_backmatter.md
 	
 	./resources/scripts/post_processing.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
+	./resources/scripts/post_processing.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_backmatter.md
 
 	# Generate seperate latex file for back matter / appendix
 
