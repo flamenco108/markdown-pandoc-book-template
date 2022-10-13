@@ -124,6 +124,12 @@ environment:
 			texlive-xetex \
 			-y
 	pip3 install pyyaml
+	@echo "================================================================================"
+	@echo "You still need to install the latest pandoc version manually"
+	@echo "Most repositories have an outdated version"
+	@echo "You can fetch the latest release @ https://github.com/jgm/pandoc/releases/latest"
+	@echo "Minimum needed version is 2.19.2"
+	@echo "================================================================================"
 # sudo apt install texlive-full -y
 
 ####################################################################################################
