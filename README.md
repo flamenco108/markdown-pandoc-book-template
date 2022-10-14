@@ -3,6 +3,21 @@ Skeleton files for writing a book using markdown. Typora is recommended
 
 Copy the book-example folder to book
 
+## Requirements
+
+You need to have make installed. To setup your environment just run `make environment` to install all packages. 
+
+In some cases the only package that you need to install manually is pandoc. The make environment script does install pandoc but unfortunately the pandoc version in most repo's is horribly out of date. You will need at least version `2.19.2`. You can check your installed version with `pandoc -v`. If your installed version is recent enough you will not need to perform this step.
+
+If your version is out of date just manually install pandoc:
+
+```
+# navigate to https://github.com/jgm/pandoc/releases/latest and copy the version for your architecture
+cd /tmp
+wget <dl link for pandoc>
+sudo dpkg -i <downloaded pandoc>
+```
+
 ## How-to
 
 ```
