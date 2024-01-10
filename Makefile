@@ -53,9 +53,12 @@ BACKMATTER_CONTENT = awk 'FNR==1 && NR!=1 {print "\n\n \\newpage \n"}{print}' $(
 # Use this to add sed filters or other piped commands 
 BACKMATTER_CONTENT_FILTERS = tee
 
+# Adds the appendix to the end of the file and overrides the meta.yml file
+META_OVERRIDE = -M appendix='$(BUILD)/latex/backmatter'
+
 # Combined arguments
 
-ARGS = $(TOC) $(MATH_FORMULAS) $(METADATA_ARGS) $(FILTER_ARGS) $(DEBUG_ARGS) $(BEFORE_TOC) $(AFTER_TOC) $(SYNTAX_HIGHLIGHTING_THEME)
+ARGS = $(TOC) $(MATH_FORMULAS) $(METADATA_ARGS) $(FILTER_ARGS) $(DEBUG_ARGS) $(BEFORE_TOC) $(AFTER_TOC) $(SYNTAX_HIGHLIGHTING_THEME) $(META_OVERRIDE)
 	
 PANDOC_COMMAND = pandoc
 
@@ -101,14 +104,14 @@ clean:
 # Silence output
 ####################################################################################################
 
-# .SILENT: all
-# .SILENT: book
-# .SILENT: $(BUILD)/markdown/$(OUTPUT_FILENAME).md
-# .SILENT: $(BUILD)/epub/$(OUTPUT_FILENAME).epub
-# .SILENT: $(BUILD)/html/$(OUTPUT_FILENAME).html
-# .SILENT: $(BUILD)/pdf/$(OUTPUT_FILENAME)_web.pdf
-# .SILENT: $(BUILD)/pdf/$(OUTPUT_FILENAME)_print.pdf
-# .SILENT: $(BUILD)/docx/$(OUTPUT_FILENAME).docx
+.SILENT: all
+.SILENT: book
+.SILENT: $(BUILD)/markdown/$(OUTPUT_FILENAME).md
+.SILENT: $(BUILD)/epub/$(OUTPUT_FILENAME).epub
+.SILENT: $(BUILD)/html/$(OUTPUT_FILENAME).html
+.SILENT: $(BUILD)/pdf/$(OUTPUT_FILENAME)_web.pdf
+.SILENT: $(BUILD)/pdf/$(OUTPUT_FILENAME)_print.pdf
+.SILENT: $(BUILD)/docx/$(OUTPUT_FILENAME).docx
 
 
 ####################################################################################################

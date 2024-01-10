@@ -58,6 +58,8 @@ The difference between the print and web pdf is that the print pfd includes extr
 
 Be sure to check out the makefile to tweak everything to your needs
 
+The default folder is `book` within the project folder. You can also specify a remote `book` folder with `make pdf-web BOOK_FOLDER=../my/folder/for/my/books/book`. Another option is to specify the filename the same way with `OUTPUT_FILENAME=myname`
+
 ## Book and pandoc settings
 
 All book settings can be found in `meta.yaml`
