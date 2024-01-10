@@ -5,17 +5,20 @@
 # Build configuration
 # SHELL=/bin/bash
 
-BUILD = build
 MAKEFILE = Makefile
 
-OUTPUT_FILENAME = book
-METADATA = book/meta.yml
-CHAPTERS = book/chapters/*.md
-FRONTMATTER = book/front_matter/*.md
-BACKMATTER = book/back_matter/*.md
-IMAGES = $(shell find book/images -type f)
+BOOK_FOLDER ?= book
+BUILD = $(BOOK_FOLDER)/build
+
+CURRENT_DATE = $(shell date '+%Y-%m-%d')
+OUTPUT_FILENAME = book-$(CURRENT_DATE)
+METADATA = $(BOOK_FOLDER)/meta.yml
+CHAPTERS = $(BOOK_FOLDER)/chapters/*.md
+FRONTMATTER = $(BOOK_FOLDER)/front_matter/*.md
+BACKMATTER = $(BOOK_FOLDER)/back_matter/*.md
+IMAGES = $(shell find $(BOOK_FOLDER)/images -type f)
 TEMPLATES = $(shell find resources/templates/ -type f)
-COVER_IMAGE = book/cover/front.png
+COVER_IMAGE = $(BOOK_FOLDER)/cover/front.png
 
 BEFORE_TOC = --include-before-body=$(BUILD)/markdown/$(OUTPUT_FILENAME)_front.md
 
@@ -62,8 +65,8 @@ MARKDOWN_ARGS   = --markdown-headings=atx
 DOCX_ARGS       = --standalone --reference-doc resources/templates/docx.docx
 EPUB_ARGS       = --template resources/templates/epub.html
 HTML_ARGS       = --template resources/templates/html.html --standalone --to html5
-PDF_PRINT_ARGS  = --template resources/templates/pdf.tex --defaults book/pandoc.yml
-PDF_WEB_ARGS    = --template resources/templates/pdf.tex --defaults book/pandoc.yml -V classoption=oneside
+PDF_PRINT_ARGS  = --template resources/templates/pdf.tex --defaults $(BOOK_FOLDER)/pandoc.yml
+PDF_WEB_ARGS    = --template resources/templates/pdf.tex --defaults $(BOOK_FOLDER)/pandoc.yml -V classoption=oneside
 BACKMATTER_ARGS = --template resources/templates/include.tex --top-level-division=chapter
 
 # Per-format file dependencies
@@ -98,14 +101,14 @@ clean:
 # Silence output
 ####################################################################################################
 
-.SILENT: all
-.SILENT: book
-.SILENT: $(BUILD)/markdown/$(OUTPUT_FILENAME).md
-.SILENT: $(BUILD)/epub/$(OUTPUT_FILENAME).epub
-.SILENT: $(BUILD)/html/$(OUTPUT_FILENAME).html
-.SILENT: $(BUILD)/pdf/$(OUTPUT_FILENAME)_web.pdf
-.SILENT: $(BUILD)/pdf/$(OUTPUT_FILENAME)_print.pdf
-.SILENT: $(BUILD)/docx/$(OUTPUT_FILENAME).docx
+# .SILENT: all
+# .SILENT: book
+# .SILENT: $(BUILD)/markdown/$(OUTPUT_FILENAME).md
+# .SILENT: $(BUILD)/epub/$(OUTPUT_FILENAME).epub
+# .SILENT: $(BUILD)/html/$(OUTPUT_FILENAME).html
+# .SILENT: $(BUILD)/pdf/$(OUTPUT_FILENAME)_web.pdf
+# .SILENT: $(BUILD)/pdf/$(OUTPUT_FILENAME)_print.pdf
+# .SILENT: $(BUILD)/docx/$(OUTPUT_FILENAME).docx
 
 
 ####################################################################################################
@@ -174,16 +177,15 @@ $(BUILD)/markdown/$(OUTPUT_FILENAME).md:	$(MARKDOWN_DEPENDENCIES)
 	echo "" >> $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
 
 	# Content filters and prep
-	sed -i 's/..\/images/book\/images/g' $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
-	sed -i 's/..\/images/book\/images/g' $(BUILD)/markdown/$(OUTPUT_FILENAME)_backmatter.md
+	sed -i 's#../images#$(BOOK_FOLDER)/images#g' $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
+	sed -i 's#../images#$(BOOK_FOLDER)/images#g' $(BUILD)/markdown/$(OUTPUT_FILENAME)_backmatter.md
 	
-	./resources/scripts/post_processing.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md
-	./resources/scripts/post_processing.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_backmatter.md
+	./resources/scripts/post_processing.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md $(BOOK_FOLDER)
+	./resources/scripts/post_processing.py $(BUILD)/markdown/$(OUTPUT_FILENAME)_backmatter.md $(BOOK_FOLDER)
 
 	# Generate seperate latex file for back matter / appendix
 
-	cat $(BUILD)/markdown/$(OUTPUT_FILENAME)_backmatter.md | $(PANDOC_COMMAND) $(BACKMATTER_ARGS) -o build/latex/backmatter.tex
-
+	cat $(BUILD)/markdown/$(OUTPUT_FILENAME)_backmatter.md | $(PANDOC_COMMAND) $(BACKMATTER_ARGS) -o $(BUILD)/latex/backmatter.tex
 	cat $(BUILD)/markdown/$(OUTPUT_FILENAME)_body.md | $(BOOK_CONTENT_FILTERS) | $(PANDOC_COMMAND) $(ARGS) $(MARKDOWN_ARGS) -o $@
 	
 	@echo "$@ was built"
