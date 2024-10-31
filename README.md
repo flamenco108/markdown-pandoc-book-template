@@ -1,7 +1,9 @@
 # Markdown book skeleton
-Skeleton files for writing a book using markdown. Typora is recommended
+Inspired by other similar projects found on this website, with the difference that the default setting is oriented towards Polish typography.
 
-Copy the book-example folder to book
+A Markdown-based book framework containing a set of scripts that generate multiple formats at once: Markdown, LaTeX, PDF, HTML, EPUB.
+
+Copy the `book-example` folder to `book` folder.
 
 ## Requirements
 
