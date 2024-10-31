@@ -1,5 +1,5 @@
 # Markdown book skeleton
-Inspired by other similar projects found on this website, with the difference that the default setting is oriented towards Polish typography.
+Forked from [epiecs template](https://github.com/epiecs/markdown-pandoc-book-template) with modification such as the default setting is oriented towards Polish typography.
 
 A Markdown-based book framework containing a set of scripts that generate multiple formats at once: Markdown, LaTeX, PDF, HTML, EPUB.
 
